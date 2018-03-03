@@ -11,11 +11,13 @@
     justify-content: center;
     width: 100%;
     /*background-color: #ebeced;*/
-    background: url(backtry8.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: url(backtry9.jpg) repeat-y;
+
+    /*background: url(backtry8.jpg) repeat-y center;*/
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    /*background-size: cover;*/
 }
 
 .main-container-center {
