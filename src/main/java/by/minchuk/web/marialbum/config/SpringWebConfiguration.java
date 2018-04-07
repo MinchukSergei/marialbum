@@ -13,9 +13,9 @@ import java.util.List;
 @Configuration
 public class SpringWebConfiguration extends WebMvcConfigurationSupport {
     @Override
-    protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+    protected void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(byteArrayHttpMessageConverter());
-        super.configureMessageConverters(converters);
+        super.extendMessageConverters(converters);
     }
 
     @Bean

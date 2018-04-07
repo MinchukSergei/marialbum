@@ -1,10 +1,11 @@
 package by.minchuk.web.marialbum.controller;
 
-import by.minchuk.web.marialbum.dto.PhotoItem;
-import by.minchuk.web.marialbum.repository.PhotoItemRepository;
+import by.minchuk.web.marialbum.dto.PhotoLike;
+import by.minchuk.web.marialbum.dto.PostItem;
+import by.minchuk.web.marialbum.repository.PhotoLikeRepository;
+import by.minchuk.web.marialbum.repository.PostItemRepository;
 import by.minchuk.web.marialbum.util.GlobalConstants;
 import by.minchuk.web.marialbum.util.RequestResponse;
-import com.mongodb.MongoClient;
 import com.mongodb.client.gridfs.model.GridFSFile;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.RandomStringUtils;
@@ -23,36 +24,41 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @RestController
 public class TestRestController {
     @Autowired
-    private PhotoItemRepository photoItemRepository;
+    private PostItemRepository postItemRepository;
+
+    @Autowired
+    private PhotoLikeRepository photoLikeRepository;
 
     @Autowired
     private GridFsTemplate gridFsTemplate;
 
     @RequestMapping(value = "/generate", method = RequestMethod.GET)
-    public RequestResponse generatePhotos() {
-        RequestResponse requestResponse = RequestResponse.createSuccessResponse();
-        List<PhotoItem> photoItems = new ArrayList<>();
+    public RequestResponse generatePosts() throws ParseException {
+        RequestResponse<Void> requestResponse = RequestResponse.createSuccessResponse();
+        List<PostItem> postItems = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            PhotoItem photoItem = new PhotoItem();
-            photoItem.setName("hui" + i);
-            photoItem.setLikes((long) i);
-            photoItems.add(photoItem);
+            PostItem postItem = new PostItem();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
+            postItem.setDate(simpleDateFormat.parse("21/01/2018"));
+            postItem.setDateCreation(new Date());
+            postItem.setDescription("description" + i);
+            postItem.setName("name" + i);
+            postItem.setPlace("borisov" + i);
+            PhotoLike photoLike = new PhotoLike();
+            photoLike.setPhotoId("photoId");
+            photoLike.setUserFingerPrint("gauno_jopa");
+            photoLike = photoLikeRepository.save(photoLike);
+            postItem.setPhotoLikes(Collections.singletonList(photoLike));
+            postItems.add(postItem);
         }
-        photoItemRepository.saveAll(photoItems);
-        return requestResponse;
-    }
-
-    @RequestMapping(value = "/photos", method = RequestMethod.GET)
-    public RequestResponse<List<PhotoItem>> getPhotos() {
-        RequestResponse<List<PhotoItem>> requestResponse = RequestResponse.createSuccessResponse();
-        List<PhotoItem> photoItems = photoItemRepository.findAll();
-        requestResponse.getRequestData().put("photos", photoItems);
+        postItemRepository.saveAll(postItems);
         return requestResponse;
     }
 
