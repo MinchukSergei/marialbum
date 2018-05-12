@@ -7,13 +7,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 @CompoundIndexes({
-        @CompoundIndex(name = "photo_fingerprint", def = "{'photoId' : 1, 'userFingerPrint' : 1}")
+        @CompoundIndex(name = "photo_fingerprint", def = "{'photoId' : 1, 'fingerPrint' : 1}")
 })
 public class PhotoLike {
     @Id
     private String id;
     private String photoId;
-    private String userFingerPrint;
+    private String fingerPrint;
 
     public String getId() {
         return id;
@@ -31,11 +31,11 @@ public class PhotoLike {
         this.photoId = photoId;
     }
 
-    public String getUserFingerPrint() {
-        return userFingerPrint;
+    public String getFingerPrint() {
+        return fingerPrint;
     }
 
-    public void setUserFingerPrint(String userFingerPrint) {
-        this.userFingerPrint = userFingerPrint;
+    public void setFingerPrint(String fingerPrint) {
+        this.fingerPrint = fingerPrint;
     }
 }

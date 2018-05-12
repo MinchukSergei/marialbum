@@ -14,7 +14,10 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.GridFsResource;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
-import org.springframework.http.*;
+import org.springframework.http.CacheControl;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +29,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 @RestController
 public class TestRestController {
@@ -53,7 +59,7 @@ public class TestRestController {
             postItem.setPlace("borisov" + i);
             PhotoLike photoLike = new PhotoLike();
             photoLike.setPhotoId("photoId");
-            photoLike.setUserFingerPrint("gauno_jopa");
+            photoLike.setFingerPrint("gauno_jopa");
             photoLike = photoLikeRepository.save(photoLike);
             postItem.setPhotoLikes(Collections.singletonList(photoLike));
             postItems.add(postItem);
@@ -67,7 +73,7 @@ public class TestRestController {
         RequestResponse requestResponse = RequestResponse.createSuccessResponse();
         for (int i = 0; i < 4; i++) {
             InputStream inputStream = new FileInputStream("C:\\Users\\Sergey\\Dropbox\\programming\\MariAlbum\\src\\main\\resources\\images\\" + i + ".jpg");
-            gridFsTemplate.store(inputStream, RandomStringUtils.randomAlphanumeric(GlobalConstants.IMAGE_RANDOM_NAME_LENGHT));
+            gridFsTemplate.store(inputStream, RandomStringUtils.randomAlphanumeric(GlobalConstants.IMAGE_RANDOM_NAME_LENGTH));
         }
         return requestResponse;
     }

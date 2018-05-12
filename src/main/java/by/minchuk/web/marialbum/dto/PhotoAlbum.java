@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @Document
-public class PhotoAlbum implements Post {
+public class PhotoAlbum {
     @Id
     private String id;
     private String previewPhotoId;
@@ -17,6 +17,7 @@ public class PhotoAlbum implements Post {
     private String name;
     private String description;
     private Date dateCreation;
+    private Boolean removed;
 
     public String getId() {
         return id;
@@ -58,12 +59,19 @@ public class PhotoAlbum implements Post {
         this.description = description;
     }
 
-    @Override
     public Date getDateCreation() {
         return dateCreation;
     }
 
     public void setDateCreation(Date dateCreation) {
         this.dateCreation = dateCreation;
+    }
+
+    public Boolean getRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(Boolean removed) {
+        this.removed = removed;
     }
 }

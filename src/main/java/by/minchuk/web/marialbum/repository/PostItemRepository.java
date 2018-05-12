@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostItemRepository extends MongoRepository<PostItem, String> {
-
 }
