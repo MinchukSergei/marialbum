@@ -1,0 +1,167 @@
+.caption {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 100%;
+    font-size: 35px;
+}
+
+.full-width-thumbnail {
+    position: relative;
+    height: 150px;
+    width: auto;
+    overflow: hidden;
+}
+
+.large-bold-text {
+    color: white;
+    font-weight: 600;
+}
+
+@media (min-width: 576px) {
+    .caption {
+        font-size: 40px;
+    }
+
+    .full-width-thumbnail {
+        height: 150px;
+    }
+}
+
+@media (min-width: 768px) {
+    .caption {
+        font-size: 45px;
+    }
+
+    .full-width-thumbnail {
+        height: 200px;
+    }
+}
+
+@media (min-width: 992px) {
+    .caption {
+        font-size: 55px;
+    }
+
+    .full-width-thumbnail {
+        height: 250px;
+    }
+}
+
+/*@media (min-width: 1200px) {*/
+    /*.large-bold-text {*/
+        /*font-size: 55px;*/
+    /*}*/
+    /**/
+    /*.full-width-thumbnail {*/
+        /*height: 250px;*/
+    /*}*/
+/*}*/
+
+.small-text {
+    font-size: 0.45em;
+    color: white;
+    font-weight: 400;
+}
+
+.thumb-photo {
+    /*width: 400px;*/
+    padding-top: 30px;
+}
+
+.photo-cover {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.crop-center-photo img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: auto;
+}
+
+.thumb-photo img.portrait {
+    height: auto;
+    width: 100%;
+}
+
+/*li img {*/
+/*max-width: 100%;*/
+/*height: auto;*/
+/*width: auto;*/
+/*}*/
+/*li img.landscape {*/
+/*max-width: none;*/
+/*max-height: 100%;*/
+/*}*/
+
+.photo-container {
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    background-color: #ececff;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.thumb-info {
+    background-color: white;
+    padding: 40px 25px 25px 25px;
+}
+
+.thumb-info-name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.thumb-info-meta {
+    padding-top: 20px;
+    font-size: 11px;
+    color: #454545;
+    font-weight: 400;
+}
+
+.thumb-info-description {
+    padding-top: 20px;
+    font-size: 13px;
+    color: #2f2f2f;
+    font-weight: 400;
+    height: 90px;
+}
+
+.footer {
+    position: absolute;
+    margin-top: 30px;
+    width: 100%;
+    height: 90px;
+    background-color: #101010;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.social-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
