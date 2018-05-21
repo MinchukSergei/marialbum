@@ -16,7 +16,7 @@
 <body>
 <div class="photo-preview">
     <div class="full-width-thumbnail crop-center-photo">
-        <img src="../images/main_preview.jpg" alt="Responsive image">
+        <img src="../images/main_preview.jpg" class="portrait" alt="Responsive image">
         <div class="caption text-center">
             <div class="large-bold-text">Maria Album</div>
             <div class="small-text">Lorem ipsum dolor sit amet, fuisset argumentum pro id</div>
@@ -139,28 +139,24 @@
         <div class="row">
             <div class="offset-lg-1 col-lg-10">
                 <div class="row d-flex align-items-center">
-                    <div class="offset-lg-1 col-lg-4 col-md-4 col-sm-6 col-4 d-inline-block align-middle">
+                    <div class="offset-lg-1 col-lg-4 col-md-5 col-sm-5 col-5 d-inline-block align-middle">
                         Subscribe me everywhere
                     </div>
-                    <ul class="offset-lg-3 offset-md-4
-                               col-lg-3 col-md-4 col-sm-6 col-8
-                               list-inline text-right">
-                        <li class="list-inline-item">
-                            <div class="social-icon">
+
+                    <div class="offset-lg-3 offset-md-3 offset-sm-3 offset-1
+                                col-lg-3 col-md-4 col-sm-4 col-6 text-right">
+                        <div class="d-flex justify-content-end">
+                            <div class="social-icon d-inline-block">
                                 <img src="../images/socials/youtube.svg">
                             </div>
-                        </li>
-                        <li class="list-inline-item">
-                            <div class="social-icon">
+                            <div class="social-icon d-inline-block">
                                 <img src="../images/socials/instagram.svg">
                             </div>
-                        </li>
-                        <li class="list-inline-item">
-                            <div class="social-icon">
+                            <div class="social-icon d-inline-block">
                                 <img src="../images/socials/vk.svg">
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -180,14 +176,14 @@
         crossorigin="anonymous"></script>
 <script>
     // debugger;
-    var tt = $(".photo-cover");
+    var tt = $(".crop-center-photo");
     tt.each(function (i, el) {
         applyPortrait(el);
         // debugger;
     });
 
     $(window).resize(function () {
-        var tt = $(".photo-cover");
+        var tt = $(".crop-center-photo");
         tt.each(function (i, el) {
             applyPortrait(el);
             // debugger;
@@ -205,21 +201,21 @@
 
     function applyPortrait(el) {
         var img = $(el).find('img');
+        // debugger;
         // if ($(window).width() < 768) {
         //     $(el).height($(el).height() + 30)
         // } else {
         //     $(el).height($(el).height() - 30)
         // }
         var imgRatio = $(img).width() / $(img).height();
-        var elRatio = $(el).width() / $(el).height();
+        var imgParent = $(img).parent();
+        var elRatio = $(imgParent).width() / $(imgParent).height();
 
         // if (elRatio < 1.4) {
         //     $(el).height($(el).height() - 50)
         // } else {
         //     $(el).height($(el).height() + 50)
         // }
-
-        elRatio = $(el).width() / $(el).height();
 
         if (imgRatio < elRatio) {
             $(img).addClass('portrait');
