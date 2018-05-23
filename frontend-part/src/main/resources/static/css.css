@@ -1,14 +1,14 @@
 .caption {
     position: absolute;
-    top: 25%;
+    top: 20%;
     left: 0;
     width: 100%;
-    font-size: 35px;
+    font-size: 28px;
 }
 
 .full-width-thumbnail {
     position: relative;
-    height: 150px;
+    height: 110px;
     width: auto;
     overflow: hidden;
 }
@@ -20,31 +20,34 @@
 
 @media (min-width: 576px) {
     .caption {
-        font-size: 40px;
+        font-size: 35px;
+        top: 20%;
     }
 
     .full-width-thumbnail {
-        height: 150px;
+        height: 140px;
     }
 }
 
 @media (min-width: 768px) {
     .caption {
-        font-size: 45px;
+        font-size: 40px;
+        top: 20%;
     }
 
     .full-width-thumbnail {
-        height: 200px;
+        height: 180px;
     }
 }
 
 @media (min-width: 992px) {
     .caption {
         font-size: 55px;
+        top: 25%;
     }
 
     .full-width-thumbnail {
-        height: 250px;
+        height: 230px;
     }
 }
 
@@ -59,9 +62,12 @@
 /*}*/
 
 .small-text {
-    font-size: 0.45em;
+    font-size: 0.4em;
     color: white;
     font-weight: 400;
+    margin-left: 200px;
+    margin-right: 200px;
+    /*max-width: 1000px;*/
 }
 
 .thumb-photo {
@@ -108,7 +114,8 @@
 }
 
 body {
-    background-color: #ececff;
+    /*background-color: #ececff;*/
+    background-color: #edeef0;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -165,4 +172,77 @@ dl, ol, ul {
     margin-bottom: 0;
 }
 
+.album-photo-cover {
+    width: 100%;
 
+}
+
+.album-photo-cover img {
+    width: 100%;
+    height: auto;
+}
+
+.album-photo-cover img.portrait {
+    width: auto;
+    max-height: 500px;
+}
+
+.album-post {
+    margin-top: 30px;
+    background-color: #ffffff;
+}
+
+/*.album-post-header {*/
+    /*!*min-height: 100px;*!*/
+    /*background-color: #ffffff;*/
+
+    /*!*padding-left: 40px;*!*/
+/*}*/
+
+.post-name {
+    font-size: 19px;
+    font-weight: 600;
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+.post-location {
+    font-weight: 400;
+    font-size: 14px;
+    padding-right: 40px;
+    font-style: italic;
+}
+
+.post-description {
+    padding: 20px 20px 0;
+    font-size: 14px;
+}
+
+.post-date {
+    font-weight: 300;
+    font-size: 12px;
+    padding-bottom: 15px;
+    padding-left: 45px;
+}
+
+.album-post-footer {
+    padding-bottom: 15px;
+}
+
+.like-count {
+    margin-left: 5px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.like-heart {
+    width: 17px;
+}
+
+.like-heart img {
+    width: 100%;
+}
+
+.post-like {
+    padding-top: 15px;
+}

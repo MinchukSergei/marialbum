@@ -1,10 +1,10 @@
 package by.minchuk.web.marialbum.controller;
 
 import by.minchuk.web.marialbum.dto.PhotoAlbum;
-import by.minchuk.web.marialbum.exception.ItemNotFoundException;
 import by.minchuk.web.marialbum.service.PhotoAlbumService;
 import by.minchuk.web.marialbum.util.ExceptionLabels;
 import by.minchuk.web.marialbum.util.RequestResponse;
+import by.minchuk.web.marialbum.exception.ItemNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

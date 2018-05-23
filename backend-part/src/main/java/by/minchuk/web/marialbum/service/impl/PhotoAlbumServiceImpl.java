@@ -1,9 +1,9 @@
 package by.minchuk.web.marialbum.service.impl;
 
 import by.minchuk.web.marialbum.dto.PhotoAlbum;
+import by.minchuk.web.marialbum.service.PhotoAlbumService;
 import by.minchuk.web.marialbum.exception.ItemNotFoundException;
 import by.minchuk.web.marialbum.repository.PhotoAlbumRepository;
-import by.minchuk.web.marialbum.service.PhotoAlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
