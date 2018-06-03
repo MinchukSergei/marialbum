@@ -5,7 +5,8 @@ html {
 
 .caption {
     position: absolute;
-    top: 20%;
+    z-index: 100;
+    top: 20px;
     left: 0;
     width: 100%;
     font-size: 28px;
@@ -20,7 +21,7 @@ html {
     font-size: 17px;
 }
 
-.full-width-thumbnail {
+.header {
     position: relative;
     height: 110px;
     width: auto;
@@ -30,30 +31,33 @@ html {
 .large-bold-text {
     color: white;
     font-weight: 600;
+    text-shadow: 2px -2px 3px rgba(75, 75, 75, 1);
 }
 
 .small-text {
     font-size: 0.5em;
     color: white;
     font-weight: 400;
+    text-shadow: 2px -2px 3px rgba(75, 75, 75, 1);
 }
 
 .large-bold-text-album {
     color: white;
     font-weight: 600;
-    padding-right: 0;
+    text-shadow: 2px -2px 3px rgba(75, 75, 75, 1);
 }
 
 .small-text-album {
     font-size: 0.6em;
     color: white;
     font-weight: 400;
+    text-shadow: 2px -2px 3px rgba(75, 75, 75, 1);
 }
 
 @media (min-width: 576px) {
     .caption {
         font-size: 35px;
-        top: 30%;
+        top: 40px;
     }
 
     .caption-album {
@@ -61,7 +65,7 @@ html {
         top: 40px;
     }
 
-    .full-width-thumbnail {
+    .header {
         height: 140px;
     }
 }
@@ -69,7 +73,7 @@ html {
 @media (min-width: 768px) {
     .caption {
         font-size: 40px;
-        top: 30%;
+        top: 45px;
     }
 
     .caption-album {
@@ -77,7 +81,7 @@ html {
         top: 45px;
     }
 
-    .full-width-thumbnail {
+    .header {
         height: 180px;
     }
 }
@@ -85,7 +89,7 @@ html {
 @media (min-width: 992px) {
     .caption {
         font-size: 55px;
-        top: 25%;
+        top: 55px;
     }
 
     .caption-album {
@@ -93,7 +97,7 @@ html {
         top: 55px;
     }
 
-    .full-width-thumbnail {
+    .header {
         height: 230px;
     }
 }
@@ -126,16 +130,6 @@ html {
     height: auto;
     width: 100%;
 }
-
-/*li img {*/
-/*max-width: 100%;*/
-/*height: auto;*/
-/*width: auto;*/
-/*}*/
-/*li img.landscape {*/
-/*max-width: none;*/
-/*max-height: 100%;*/
-/*}*/
 
 .photo-container {
     display: flex;
@@ -293,7 +287,7 @@ dl, ol, ul {
     font-size: 10px;
     font-weight: 500;
     padding-right: 10px;
-    background: linear-gradient(to top, rgba(50, 50, 50, 1), rgba(0, 0, 0, 0));
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .thumb-info-button {
