@@ -1,11 +1,16 @@
 .header {
     position: relative;
     height: 110px;
-    width: auto;
+    width: 100%;
     overflow: hidden;
 }
 
-.caption {
+.header-image {
+    height: 100%;
+    width: 100%;
+}
+
+.header-caption {
     position: absolute;
     z-index: 100;
     top: 20px;
@@ -14,7 +19,7 @@
     font-size: 28px;
 }
 
-.caption.album {
+.header-caption.album {
     font-size: 17px;
 }
 
@@ -37,12 +42,12 @@
 }
 
 @media (min-width: 576px) {
-    .caption {
+    .header-caption {
         font-size: 35px;
         top: 40px;
     }
 
-    .caption.album {
+    .header-caption.album {
         font-size: 23px;
     }
 
@@ -52,12 +57,12 @@
 }
 
 @media (min-width: 768px) {
-    .caption {
+    .header-caption {
         font-size: 40px;
         top: 45px;
     }
 
-    .caption.album {
+    .header-caption.album {
         font-size: 27px;
     }
 
@@ -67,12 +72,12 @@
 }
 
 @media (min-width: 992px) {
-    .caption {
+    .header-caption {
         font-size: 55px;
         top: 55px;
     }
 
-    .caption.album {
+    .header-caption.album {
         font-size: 33px;
     }
 

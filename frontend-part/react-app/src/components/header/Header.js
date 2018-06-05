@@ -8,11 +8,11 @@ class Header extends Component {
     render() {
         return (
             <div className="header">
-                <div className="crop-center-photo">
-                    <img src={headerImage} className="portrait" alt="Header image"/>
+                <div className="header-image">
+                    <img src={headerImage} className="img-cover" alt="header preview"/>
                     <div className="container">
                         <div className="row">
-                            <div className="caption text-center">
+                            <div className="header-caption text-center">
                                 <div className="header-text large">Maria Album</div>
                                 <div className="header-text small">Lorem ipsum dolor sit amet, fuisset argumentum proid</div>
                             </div>

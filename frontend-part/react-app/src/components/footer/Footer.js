@@ -23,13 +23,13 @@ class Footer extends Component {
                                                 col-lg-3 col-md-4 col-sm-4 col-6 text-right">
                                     <div className="d-flex justify-content-end">
                                         <div className="social-icon d-inline-block">
-                                            <img src={youtubeIcon}/>
+                                            <img src={youtubeIcon} alt="youtube icon"/>
                                         </div>
                                         <div className="social-icon d-inline-block">
-                                            <img src={instagramIcon}/>
+                                            <img src={instagramIcon} alt="instagram icon"/>
                                         </div>
                                         <div className="social-icon d-inline-block">
-                                            <img src={vkIcon}/>
+                                            <img src={vkIcon} alt="vk icon"/>
                                         </div>
                                     </div>
                                 </div>

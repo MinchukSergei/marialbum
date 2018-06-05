@@ -1,15 +1,16 @@
-.crop-center-photo img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    height: 100%;
-    width: auto;
+html {
+    position: relative;
+    min-height: 100%;
 }
 
-.crop-center-photo img.portrait {
-    height: auto;
+body {
+    background-color: #edeef0;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 120px;
+}
+
+.img-cover {
+    object-fit: cover;
     width: 100%;
+    height: 100%;
 }
