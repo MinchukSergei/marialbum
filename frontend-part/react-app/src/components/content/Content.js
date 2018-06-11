@@ -9,8 +9,10 @@ import img6 from './images/6.jpg';
 import img7 from './images/7.jpg';
 import img8 from './images/8.jpg';
 import Album from "../album/Album";
+import Post from "../post/Post";
 
 let imgPathArray = [img1, img2, img3, img4, img5, img6, img7, img8];
+let isAlbum = true;
 
 class Content extends Component {
     render() {
@@ -19,7 +21,9 @@ class Content extends Component {
                 <div className="row">
                     {
                         imgPathArray.map((img, i) => {
-                            return <Album key={'thumb' + i} image={img} isOdd={i % 2}/>;
+                            return isAlbum ?
+                                <Post key={'post' + i} image={img} isOdd={i % 2}/> :
+                                <Album key={'album' + i} image={img} isOdd={i % 2}/>;
                         })
                     }
                 </div>

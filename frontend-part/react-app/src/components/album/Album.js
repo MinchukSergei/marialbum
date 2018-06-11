@@ -16,6 +16,7 @@ class Album extends Component {
             <div className={'offset-lg-' + (this.state.isOdd ? "0" : "1") + ' col-lg-5 offset-md-1 col-md-10'}>
                 <div className="album-thumb">
                     <div className="album-photo-cover">
+                        <div className="album-image-overlay"/>
                         <div className="album-photo-count d-flex
                                         align-items-center justify-content-end">
                             25 images
