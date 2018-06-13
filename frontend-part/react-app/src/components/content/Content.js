@@ -12,7 +12,7 @@ import Album from "../album/Album";
 import Post from "../post/Post";
 
 let imgPathArray = [img1, img2, img3, img4, img5, img6, img7, img8];
-let isAlbum = true;
+let isAlbum = false;
 
 class Content extends Component {
     render() {

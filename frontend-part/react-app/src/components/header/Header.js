@@ -1,24 +1,42 @@
 import React, {Component} from 'react';
 
-import headerImage from './images/headerImage.jpg';
-
 import './Header.css';
 
 class Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            mainGroupInfo: props.mainGroupInfo
+        };
+    }
+
     render() {
+        const {isLoading, headerPhoto, name, description} = this.props.mainGroupInfo;
+        const headerImageStyle = {
+            backgroundImage: 'url(' + headerPhoto + ')',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center'
+        };
+
         return (
             <div className="header">
-                <div className="header-image">
-                    <img src={headerImage} className="img-cover" alt="header preview"/>
-                    <div className="container">
-                        <div className="row">
-                            <div className="header-caption text-center">
-                                <div className="header-text large">Maria Album</div>
-                                <div className="header-text small">Lorem ipsum dolor sit amet, fuisset argumentum proid</div>
+                {
+                    isLoading ?
+                        (<div>Loading</div>) :
+                        (<div className="header-image">
+                            <div className="img-cover" style={headerImageStyle}/>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="header-caption text-center">
+                                        <div className="header-blur" style={headerImageStyle}/>
+                                        <div className="header-text large">{name}</div>
+                                        <div className="header-text small">{description}</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        </div>)
+
+                }
             </div>
         );
     }
