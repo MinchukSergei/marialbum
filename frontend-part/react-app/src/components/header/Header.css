@@ -10,6 +10,16 @@
     width: 100%;
 }
 
+.header-blur {
+    z-index: 125;
+    height: 150%;
+    width: 100%;
+    position: absolute;
+    filter: blur(7px);
+    bottom: -25%;
+    top: -25%;
+}
+
 .header-caption {
     position: absolute;
     z-index: 100;
@@ -17,6 +27,9 @@
     left: 0;
     width: 100%;
     font-size: 28px;
+    overflow: hidden;
+    border-top: 2px solid #FFFFFF3F;
+    border-bottom: 2px solid #FFFFFF3F;
 }
 
 .header-caption.album {
@@ -24,6 +37,8 @@
 }
 
 .header-text {
+    z-index: 150;
+    position: relative;
     color: #FFFFFF;
     text-shadow: 2px -2px 3px #3B3B3B;
 }
@@ -44,7 +59,9 @@
 @media (min-width: 576px) {
     .header-caption {
         font-size: 35px;
-        top: 40px;
+        top: 23px;
+        padding-bottom: 5px;
+        padding-top: 5px;
     }
 
     .header-caption.album {
@@ -59,7 +76,9 @@
 @media (min-width: 768px) {
     .header-caption {
         font-size: 40px;
-        top: 45px;
+        top: 35px;
+        padding-bottom: 10px;
+        padding-top: 10px;
     }
 
     .header-caption.album {
@@ -73,7 +92,7 @@
 
 @media (min-width: 992px) {
     .header-caption {
-        font-size: 55px;
+        font-size: 50px;
         top: 55px;
     }
 
@@ -82,6 +101,6 @@
     }
 
     .header {
-        height: 230px;
+        height: 250px;
     }
 }
