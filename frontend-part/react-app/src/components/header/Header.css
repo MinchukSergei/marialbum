@@ -1,6 +1,6 @@
 .header {
     position: relative;
-    height: 110px;
+    height: 140px;
     width: 100%;
     overflow: hidden;
 }
@@ -15,7 +15,7 @@
     height: 150%;
     width: 100%;
     position: absolute;
-    filter: blur(7px);
+    filter: blur(13px);
     bottom: -25%;
     top: -25%;
 }
@@ -23,13 +23,14 @@
 .header-caption {
     position: absolute;
     z-index: 100;
-    top: 20px;
     left: 0;
     width: 100%;
     font-size: 28px;
     overflow: hidden;
     border-top: 2px solid #FFFFFF3F;
     border-bottom: 2px solid #FFFFFF3F;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .header-caption.album {
@@ -40,7 +41,7 @@
     z-index: 150;
     position: relative;
     color: #FFFFFF;
-    text-shadow: 2px -2px 3px #3B3B3B;
+    text-shadow: 1px 0 2px #3B3B3B;
 }
 
 .header-text.large {
@@ -58,10 +59,9 @@
 
 @media (min-width: 576px) {
     .header-caption {
-        font-size: 35px;
-        top: 23px;
-        padding-bottom: 5px;
-        padding-top: 5px;
+        font-size: 33px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
     .header-caption.album {
@@ -75,10 +75,9 @@
 
 @media (min-width: 768px) {
     .header-caption {
-        font-size: 40px;
-        top: 35px;
-        padding-bottom: 10px;
-        padding-top: 10px;
+        font-size: 37px;
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
 
     .header-caption.album {
@@ -92,8 +91,9 @@
 
 @media (min-width: 992px) {
     .header-caption {
-        font-size: 50px;
-        top: 55px;
+        font-size: 45px;
+        padding-top: 25px;
+        padding-bottom: 25px;
     }
 
     .header-caption.album {

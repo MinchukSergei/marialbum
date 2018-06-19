@@ -24,16 +24,18 @@ class Header extends Component {
                     isLoading ?
                         (<div>Loading</div>) :
                         (<div className="header-image">
-                            <div className="img-cover" style={headerImageStyle}/>
-                            <div className="container">
-                                <div className="row">
-                                    <div className="header-caption text-center">
-                                        <div className="header-blur" style={headerImageStyle}/>
-                                        <div className="header-text large">{name}</div>
-                                        <div className="header-text small">{description}</div>
+                            <div className="img-cover" style={headerImageStyle}>
+                                <div className="container h-100">
+                                    <div className="row h-100 align-items-center">
+                                        <div className="header-caption text-center">
+                                            <div className="header-blur" style={headerImageStyle}/>
+                                            <div className="header-text large">{name}</div>
+                                            <div className="header-text small">{description}</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>)
 
                 }

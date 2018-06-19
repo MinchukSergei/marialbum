@@ -13,6 +13,9 @@ class App extends Component {
         this.state = {
             mainGroupInfo: {
                 isLoading: true
+            },
+            contentData: {
+                isLoading: true
             }
         };
         this.api = new ApiService(this);
@@ -26,7 +29,7 @@ class App extends Component {
         return (
             <div>
                 <Header mainGroupInfo={this.state.mainGroupInfo}/>
-                <Content/>
+                <Content contentData={this.state.contentData}/>
                 <Footer/>
             </div>
         );
