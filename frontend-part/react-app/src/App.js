@@ -11,7 +11,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mainGroupInfo: {
+            headerInfo: {
                 isLoading: true
             },
             contentData: {
@@ -28,7 +28,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Header mainGroupInfo={this.state.mainGroupInfo}/>
+                <Header headerInfo={this.state.headerInfo}/>
                 <Content contentData={this.state.contentData}/>
                 <Footer/>
             </div>

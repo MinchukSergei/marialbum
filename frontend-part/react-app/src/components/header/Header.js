@@ -6,12 +6,13 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            mainGroupInfo: props.mainGroupInfo
+            isAlbum: false,
+            headerInfo: props.headerInfo
         };
     }
 
     render() {
-        const {isLoading, headerPhoto, name, description} = this.props.mainGroupInfo;
+        const {isLoading, headerPhoto, name, description} = this.props.headerInfo;
         const headerImageStyle = {
             backgroundImage: 'url(' + headerPhoto + ')',
             backgroundSize: 'cover',
@@ -35,9 +36,7 @@ class Header extends Component {
                                     </div>
                                 </div>
                             </div>
-
                         </div>)
-
                 }
             </div>
         );

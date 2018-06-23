@@ -17,8 +17,9 @@ export default class APIService {
     }
 
     load() {
-        this.getGroupMainInfo();
-        this.getAlbums();
+        // this.getGroupMainInfo();
+        // this.getAlbums();
+        this.getPosts(254672524);
     }
 
     getGroupMainInfo() {
@@ -30,7 +31,7 @@ export default class APIService {
             };
 
         VK.api("groups.getById", params, function ({response: {0: group}}) {
-            let mainGroupInfo = {
+            let headerInfo = {
                 headerPhoto: me.getAppropriateImage(group.crop_photo.photo, APIService.IMAGE_SIZES.xxxbig),
                 name: group.name,
                 description: group.description,
@@ -38,7 +39,7 @@ export default class APIService {
             };
 
             me.appComponent.setState({
-                mainGroupInfo: mainGroupInfo
+                headerInfo: headerInfo
             })
         });
     }
@@ -48,12 +49,11 @@ export default class APIService {
             ids = [],
             params = {
                 owner_id: -APIService.GROUP_ID,
-                version: APIService.VK_API_VERSION,
-                need_covers: 1
+                version: APIService.VK_API_VERSION
             };
 
-        VK.api("photos.getAlbums", params, function ({response: albumsResp}) {
-            let albums = albumsResp.map((album) => {
+        VK.api("photos.getAlbums", params, function ({response: albumsResponse}) {
+            let albums = albumsResponse.map((album) => {
                 return {
                     id: album.aid,
                     thumbId: album.thumb_id,
@@ -69,16 +69,57 @@ export default class APIService {
                 photos.forEach((photo, i) => {
                     albums[i].thumb = photo.imageSrc;
                 });
-                let albumsData = {
-                    albums: albums,
-                    isLoading: false
-                };
 
                 me.appComponent.setState({
-                    contentData: albumsData
+                    contentData: {
+                        contentItems: albums,
+                        isLoading: false
+                    }
                 })
             });
         });
+    }
+
+    getPosts(albumId) {
+        let me = this,
+            params = {
+                owner_id: -APIService.GROUP_ID,
+                album_id: albumId,
+                extended: 1,
+                version: APIService.VK_API_VERSION
+            };
+
+        VK.api("photos.get", params, function ({response: postsResponse}) {
+            let posts = postsResponse.map((post) => {
+                let postSummary = APIService.getPostSummary(post);
+                return {
+                    id: post.pid,
+                    date: post.created,
+                    title: postSummary.title,
+                    description: postSummary.description,
+                    size: post.size,
+                    latitude: post.lat,
+                    longitude: post.long,
+                    image: me.getAppropriateImage(post, APIService.IMAGE_SIZES.xxxbig),
+                    likes: post.likes.count
+                };
+            });
+
+            me.appComponent.setState({
+                contentData: {
+                    contentItems: posts,
+                    isLoading: false
+                }
+            })
+        });
+    }
+
+    static getPostSummary(post) {
+        let textArr = post.text ? post.text.split('<br>') : [];
+        return {
+            title: textArr[0],
+            description: textArr[1]
+        };
     }
 
     getPhotos(ids, callback) {
