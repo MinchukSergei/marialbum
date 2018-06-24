@@ -41,7 +41,7 @@
     z-index: 150;
     position: relative;
     color: #FFFFFF;
-    text-shadow: 1px 0 2px #3B3B3B;
+    text-shadow: 2px 2px 2px #3B3B3B;
 }
 
 .header-text.large {

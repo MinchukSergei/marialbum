@@ -12,17 +12,11 @@ export default class APIService {
         small: 5
     };
 
-    constructor(appComponent) {
-        this.appComponent = appComponent;
+    constructor(component) {
+        this.component = component;
     }
 
-    load() {
-        // this.getGroupMainInfo();
-        // this.getAlbums();
-        this.getPosts(254672524);
-    }
-
-    getGroupMainInfo() {
+    getGroupHeaderInfo() {
         let me = this,
             params = {
                 group_id: APIService.GROUP_ID,
@@ -32,15 +26,43 @@ export default class APIService {
 
         VK.api("groups.getById", params, function ({response: {0: group}}) {
             let headerInfo = {
-                headerPhoto: me.getAppropriateImage(group.crop_photo.photo, APIService.IMAGE_SIZES.xxxbig),
+                headerPhoto: APIService.getAppropriateImage(group.crop_photo.photo, APIService.IMAGE_SIZES.xxxbig),
                 name: group.name,
                 description: group.description,
                 isLoading: false
             };
 
-            me.appComponent.setState({
-                headerInfo: headerInfo
-            })
+            me.component.setState({
+                headerInfo: headerInfo,
+                isLoading: false
+            });
+        });
+    }
+
+    getAlbumHeaderInfo(albumId) {
+        let me = this,
+            params = {
+                owner_id: -APIService.GROUP_ID,
+                album_ids: albumId,
+                version: APIService.VK_API_VERSION
+            };
+
+        VK.api("photos.getAlbums", params, function ({response: {0: album}}) {
+            let id = -APIService.GROUP_ID + '_' + album.thumb_id;
+
+            me.getPhotos(id, function (photos) {
+                let headerInfo = {
+                    headerPhoto: photos[0].imageSrc,
+                    name: album.title,
+                    description: album.description,
+                    isLoading: false
+                };
+
+                me.component.setState({
+                    headerInfo: headerInfo,
+                    isLoading: false
+                });
+            }, APIService.IMAGE_SIZES.xxxbig);
         });
     }
 
@@ -70,11 +92,9 @@ export default class APIService {
                     albums[i].thumb = photo.imageSrc;
                 });
 
-                me.appComponent.setState({
-                    contentData: {
-                        contentItems: albums,
-                        isLoading: false
-                    }
+                me.component.setState({
+                    contentItems: albums,
+                    isLoading: false
                 })
             });
         });
@@ -92,6 +112,7 @@ export default class APIService {
         VK.api("photos.get", params, function ({response: postsResponse}) {
             let posts = postsResponse.map((post) => {
                 let postSummary = APIService.getPostSummary(post);
+
                 return {
                     id: post.pid,
                     date: post.created,
@@ -100,17 +121,35 @@ export default class APIService {
                     size: post.size,
                     latitude: post.lat,
                     longitude: post.long,
-                    image: me.getAppropriateImage(post, APIService.IMAGE_SIZES.xxxbig),
+                    image: APIService.getAppropriateImage(post, APIService.IMAGE_SIZES.xxxbig),
                     likes: post.likes.count
                 };
             });
 
-            me.appComponent.setState({
-                contentData: {
-                    contentItems: posts,
-                    isLoading: false
-                }
+            me.component.setState({
+                contentItems: posts,
+                isLoading: false
             })
+        });
+    }
+
+    getPhotos(ids, callback, size) {
+        let params = {
+            photos: ids,
+            version: APIService.VK_API_VERSION
+        };
+
+        VK.api("photos.getById", params, function ({response: photos}) {
+            photos = photos.map((photo) => {
+                return {
+                    id: photo.pid,
+                    imageSrc: APIService.getAppropriateImage(photo, size)
+                };
+            });
+
+            if (callback) {
+                callback(photos);
+            }
         });
     }
 
@@ -122,28 +161,7 @@ export default class APIService {
         };
     }
 
-    getPhotos(ids, callback) {
-        let me = this,
-            params = {
-                photos: ids,
-                version: APIService.VK_API_VERSION
-            };
-
-        VK.api("photos.getById", params, function ({response: photos}) {
-            photos = photos.map((photo) => {
-                return {
-                    id: photo.pid,
-                    imageSrc: me.getAppropriateImage(photo)
-                };
-            });
-
-            if (callback) {
-                callback(photos);
-            }
-        });
-    }
-
-    getAppropriateImage(imageObject, prioritySize = APIService.IMAGE_SIZES.xbig) {
+    static getAppropriateImage(imageObject, prioritySize = APIService.IMAGE_SIZES.xbig) {
         let sizePriority = ['src_xxxbig', 'src_xxbig', 'src_xbig', 'src_big', 'src', 'src_small'],
             imageSize = sizePriority.slice(prioritySize).find(function (size) {
                 return imageObject[size] !== undefined;

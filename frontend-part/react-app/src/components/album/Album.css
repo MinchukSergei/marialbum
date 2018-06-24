@@ -85,7 +85,6 @@
 }
 
 .album-info-button {
-    margin-top: 5px;
     width: 110px;
     height: 30px;
     font-size: 11px;
@@ -100,5 +99,8 @@
     color: #cb132a;
     background-color: #FFFFFF;
     border: 1px solid #cb132a;
+}
 
+a:hover {
+    text-decoration: none;
 }

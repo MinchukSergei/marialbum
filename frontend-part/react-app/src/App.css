@@ -1,16 +1,25 @@
-html {
-    position: relative;
-    min-height: 100%;
-}
-
-body {
-    background-color: #edeef0;
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 120px;
-}
-
 .img-cover {
     object-fit: cover;
     width: 100%;
     height: 100%;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.loading-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.loading {
+    background: url("assets/loading.svg") no-repeat center;
+    width: 50px;
+    height: 50px;
 }

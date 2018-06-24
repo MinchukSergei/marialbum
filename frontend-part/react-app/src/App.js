@@ -1,35 +1,32 @@
 import React, {Component} from 'react';
+import {Route, Switch} from 'react-router-dom';
 
-import Header from './components/header/Header';
-import Content from './components/content/Content';
+import HeaderAlbum from './components/header/HeaderAlbum';
+import HeaderGroup from './components/header/HeaderGroup';
 import Footer from './components/footer/Footer';
-import ApiService from './components/api/APIService';
+
+import ContentAlbums from "./components/content/ContentAlbums";
+import ContentPosts from "./components/content/ContentPosts";
 
 import './App.css';
 
+
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            headerInfo: {
-                isLoading: true
-            },
-            contentData: {
-                isLoading: true
-            }
-        };
-        this.api = new ApiService(this);
-    }
-
-    componentDidMount() {
-        this.api.load();
-    }
-
     render() {
         return (
-            <div>
-                <Header headerInfo={this.state.headerInfo}/>
-                <Content contentData={this.state.contentData}/>
+            <div className='main-wrapper'>
+                <Switch>
+                    <Route exact path='/(albums)*'
+                           render={(props) => <HeaderGroup {...props}/>}/>
+                    <Route path='/album/:albumId'
+                           render={(props) => <HeaderAlbum {...props}/>}/>
+                </Switch>
+                <Switch>
+                    <Route exact path='/(albums)*'
+                           render={(props) => <ContentAlbums {...props}/>}/>
+                    <Route path='/album/:albumId'
+                           render={(props) => <ContentPosts {...props}/>}/>
+                </Switch>
                 <Footer/>
             </div>
         );
