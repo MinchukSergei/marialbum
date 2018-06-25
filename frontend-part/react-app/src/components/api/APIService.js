@@ -1,3 +1,5 @@
+import errorImage from './error.jpg';
+
 const VK = window.VK;
 
 export default class APIService {
@@ -39,6 +41,21 @@ export default class APIService {
         });
     }
 
+    handleError() {
+        let me = this;
+        let headerInfo = {
+            headerPhoto: errorImage,
+            name: '404 not found',
+            description: 'back to the main page',
+            isLoading: false
+        };
+
+        me.component.setState({
+            headerInfo: headerInfo,
+            isLoading: false
+        });
+    }
+
     getAlbumHeaderInfo(albumId) {
         let me = this,
             params = {
@@ -47,7 +64,16 @@ export default class APIService {
                 version: APIService.VK_API_VERSION
             };
 
+        if (!Number.isInteger(+albumId)) {
+            me.handleError();
+            return;
+        }
+
         VK.api("photos.getAlbums", params, function ({response: {0: album}}) {
+            if (album === undefined) {
+                me.handleError();
+                return;
+            }
             let id = -APIService.GROUP_ID + '_' + album.thumb_id;
 
             me.getPhotos(id, function (photos) {
@@ -110,6 +136,13 @@ export default class APIService {
             };
 
         VK.api("photos.get", params, function ({response: postsResponse}) {
+            if (postsResponse === undefined) {
+                me.component.setState({
+                    contentItems: [],
+                    isLoading: false
+                });
+                return;
+            }
             let posts = postsResponse.map((post) => {
                 let postSummary = APIService.getPostSummary(post);
 
@@ -129,7 +162,7 @@ export default class APIService {
             me.component.setState({
                 contentItems: posts,
                 isLoading: false
-            })
+            });
         });
     }
 
@@ -157,7 +190,7 @@ export default class APIService {
         let textArr = post.text ? post.text.split('<br>') : [];
         return {
             title: textArr[0],
-            description: textArr[1]
+            description: textArr.splice(1).join(' ')
         };
     }
 

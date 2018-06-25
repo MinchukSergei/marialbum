@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import Moment from 'moment';
 
 import likeImg from './assets/like.svg';
-// import unlikeImg from './assets/unlike.svg';
-// import pinImg from './assets/pin.svg';
-
 import './Post.css';
 
 class Post extends Component {

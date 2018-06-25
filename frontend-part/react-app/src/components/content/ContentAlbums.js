@@ -20,22 +20,21 @@ class ContentAlbums extends Content {
         const {isLoading, contentItems} = this.state;
 
         return (
-            <div className="container content">
-                <div className="row">
-                    {
-                        true ? (
-                                <div className='loading-wrapper'>
-                                    <div className='loading'/>
-                                </div>
-                            ) :
-                            (
-                                contentItems.map(
-                                (contentItem, i) => {
+            <div className="container main-content">
+                {
+                    isLoading ?
+                        (<div className='loading-wrapper'>
+                            <div className='loading'/>
+                        </div>)
+                        :
+                        (<div className="row">
+                            {
+                                (contentItems.map((contentItem, i) => {
                                     return <Album key={'album' + i} album={contentItem} isOdd={i % 2}/>;
-                                })
-                            )
-                    }
-                </div>
+                                }))
+                            }
+                        </div>)
+                }
             </div>
         );
     }

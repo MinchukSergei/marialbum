@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Redirect, Route, Switch} from 'react-router-dom';
 
 import HeaderAlbum from './components/header/HeaderAlbum';
 import HeaderGroup from './components/header/HeaderGroup';
@@ -14,12 +14,13 @@ import './App.css';
 class App extends Component {
     render() {
         return (
-            <div className='main-wrapper'>
+            <div className="main-wrapper">
                 <Switch>
                     <Route exact path='/(albums)*'
                            render={(props) => <HeaderGroup {...props}/>}/>
                     <Route path='/album/:albumId'
                            render={(props) => <HeaderAlbum {...props}/>}/>
+                    <Redirect exact to="/albums"/>
                 </Switch>
                 <Switch>
                     <Route exact path='/(albums)*'

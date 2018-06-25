@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
-import youtubeIcon from './images/youtube.svg';
-import instagramIcon from './images/instagram.svg';
-import vkIcon from './images/vk.svg';
+import youtubeIcon from './assets/youtube.svg';
+import instagramIcon from './assets/instagram.svg';
+import vkIcon from './assets/vk.svg';
 
 import './Footer.css';
 
@@ -12,30 +12,47 @@ class Footer extends Component {
             <div className="footer d-flex align-items-center">
                 <div className="container">
                     <div className="row">
-                        <div className="offset-lg-1 col-lg-10">
-                            <div className="row d-flex align-items-center">
-                                <div className="offset-lg-1 col-lg-4 col-md-5 col-sm-5 col-5
-                                                d-inline-block align-middle">
-                                    Subscribe me everywhere
+                        <div className="offset-lg-3 col-lg-6">
+                            <div className="d-flex justify-content-around">
+                                <div className="d-flex align-items-center">
+                                    Follow me in socials
                                 </div>
-
-                                <div className="offset-lg-3 offset-md-3 offset-sm-3 offset-1
-                                                col-lg-3 col-md-4 col-sm-4 col-6 text-right">
-                                    <div className="d-flex justify-content-end">
-                                        <div className="social-icon d-inline-block">
+                                <div className="socials">
+                                    <div className="social-icon">
+                                        <a href="https://www.youtube.com"
+                                           rel="noopener noreferrer"
+                                           target="_blank">
                                             <img src={youtubeIcon} alt="youtube icon"/>
-                                        </div>
-                                        <div className="social-icon d-inline-block">
+                                        </a>
+                                    </div>
+                                    <div className="social-icon">
+                                        <a href="https://www.instagram.com/maria_schneerson/"
+                                           rel="noopener noreferrer"
+                                           target="_blank">
                                             <img src={instagramIcon} alt="instagram icon"/>
-                                        </div>
-                                        <div className="social-icon d-inline-block">
+                                        </a>
+                                    </div>
+                                    <div className="social-icon">
+                                        <a href="https://vk.com/schneerson"
+                                           rel="noopener noreferrer"
+                                           target="_blank">
                                             <img src={vkIcon} alt="vk icon"/>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="footer-copyright d-flex justify-content-center">
+                    <span className="footer-source">
+                        © 2018 Maria Album
+                    </span>
+                    <a href="https://github.com/MinchukSergei/marialbum"
+                       rel="noopener noreferrer"
+                       target="_blank">
+                        <span className="fab fa-github"/>
+                    </a>
                 </div>
             </div>
         );

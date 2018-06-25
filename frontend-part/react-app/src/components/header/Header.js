@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 import ApiService from '../api/APIService';
 
 import './Header.css';
@@ -28,28 +29,29 @@ class Header extends Component {
         return (
             <div className="header">
                 {
-                    true ?
-                        (
-                            <div className='loading-wrapper'>
-                                <div className='loading'/>
-                            </div>
-                        ) :
-                        (
-                            <div className="header-image">
-                                <div className="img-cover" style={Header.getHeaderImageStyle(headerPhoto)}>
-                                    <div className="container h-100">
-                                        <div className="row h-100 align-items-center">
-                                            <div className="header-caption text-center">
+                    isLoading ?
+                        (<div className='loading-wrapper'>
+                            <div className='loading'/>
+                        </div>)
+                        :
+                        (<div className="header-image">
+                            <div className="img-cover" style={Header.getHeaderImageStyle(headerPhoto)}>
+                                <div className="container h-100">
+                                    <div className="row h-100 align-items-center">
+                                        <div className="header-caption text-center">
+                                            <Link to={'/albums'}>
                                                 <div className="header-blur"
                                                      style={Header.getHeaderImageStyle(headerPhoto)}/>
-                                                <div className="header-text large">{name}</div>
-                                                <div className="header-text small">{description}</div>
-                                            </div>
+                                                <div className="d-flex flex-column">
+                                                    <div className="header-text large">{name}</div>
+                                                    <div className="header-text small">{description}</div>
+                                                </div>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        )
+                        </div>)
                 }
             </div>
         );

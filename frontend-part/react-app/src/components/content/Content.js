@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import {Component} from 'react';
 
 import ApiService from "../api/APIService";
 import './Content.css';
