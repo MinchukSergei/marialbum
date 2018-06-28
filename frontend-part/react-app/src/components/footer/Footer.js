@@ -19,23 +19,17 @@ class Footer extends Component {
                                 </div>
                                 <div className="socials">
                                     <div className="social-icon">
-                                        <a href="https://www.youtube.com"
-                                           rel="noopener noreferrer"
-                                           target="_blank">
+                                        <a href="https://www.youtube.com">
                                             <img src={youtubeIcon} alt="youtube icon"/>
                                         </a>
                                     </div>
                                     <div className="social-icon">
-                                        <a href="https://www.instagram.com/maria_schneerson/"
-                                           rel="noopener noreferrer"
-                                           target="_blank">
+                                        <a href="https://www.instagram.com/maria_schneerson">
                                             <img src={instagramIcon} alt="instagram icon"/>
                                         </a>
                                     </div>
                                     <div className="social-icon">
-                                        <a href="https://vk.com/schneerson"
-                                           rel="noopener noreferrer"
-                                           target="_blank">
+                                        <a href="https://vk.com/schneerson">
                                             <img src={vkIcon} alt="vk icon"/>
                                         </a>
                                     </div>
@@ -48,9 +42,7 @@ class Footer extends Component {
                     <span className="footer-source">
                         © 2018 Maria Album
                     </span>
-                    <a href="https://github.com/MinchukSergei/marialbum"
-                       rel="noopener noreferrer"
-                       target="_blank">
+                    <a href="https://github.com/MinchukSergei/marialbum">
                         <span className="fab fa-github"/>
                     </a>
                 </div>

@@ -26,8 +26,7 @@
 }
 
 .post-photo {
-    width: 100%;
-    height: auto;
+    max-height: 500px;
 }
 
 .post-photo.portrait {

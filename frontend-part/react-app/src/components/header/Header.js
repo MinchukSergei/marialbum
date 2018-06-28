@@ -44,7 +44,7 @@ class Header extends Component {
                                                      style={Header.getHeaderImageStyle(headerPhoto)}/>
                                                 <div className="d-flex flex-column">
                                                     <div className="header-text large">{name}</div>
-                                                    <div className="header-text small">{description}</div>
+                                                    <div className="offset-lg-2 col-lg-8 header-text small">{description}</div>
                                                 </div>
                                             </Link>
                                         </div>

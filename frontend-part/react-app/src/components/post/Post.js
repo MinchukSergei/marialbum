@@ -8,19 +8,8 @@ class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            post: props.post,
-            isPortrait: false
+            post: props.post
         };
-        this.onImgLoad = this.onImgLoad.bind(this);
-    }
-
-    onImgLoad({currentTarget: img}) {
-        let h = img.clientHeight,
-            w = img.clientWidth;
-
-        if (w / h < 1) {
-            this.setState({isPortrait: true});
-        }
     }
 
     static isVisible(param) {
@@ -31,7 +20,6 @@ class Post extends Component {
 
     render() {
         const {post} = this.props;
-        const {isPortrait} = this.state;
 
         return (
             <div className="col-lg-7 mx-auto">
@@ -44,11 +32,7 @@ class Post extends Component {
                             {Moment.unix(post.date).format('D MMMM YYYY | HH:mm')}
                         </div>
                     </div>
-                    <div className="post-photo-cover">
-                        <img onLoad={this.onImgLoad} src={post.image} alt="post"
-                             className={'post-photo mx-auto d-block ' + (isPortrait ? 'portrait' : '')}/>
-                    </div>
-
+                    <img src={post.image} alt="post" className="img-contain post-photo mx-auto d-block"/>
                     <div className="post-footer">
                         {/*<div className="post-location col-12 text-right">*/}
                         {/*<span className="post-location-pin">*/}
