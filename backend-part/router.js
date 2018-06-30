@@ -1,7 +1,7 @@
 const koaRouter = require('koa-router');
 const koaRequest = require('koa-http-request');
 
-const router = new koaRouter();
+const router = new koaRouter({prefix: '/api'});
 const accessToken = process.env.VK_ACCESS_TOKEN;
 const GROUP_ID = 167275521;
 

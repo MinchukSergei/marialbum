@@ -2,6 +2,7 @@ import request from 'request';
 import errorImage from './error.jpg';
 
 export default class APIService {
+    static URL_PREFIX = 'http://server.marialbum.com/api';
     static IMAGE_SIZES = {
         xxxbig: 0,
         xxbig: 1,
@@ -18,7 +19,7 @@ export default class APIService {
     getGroupHeaderInfo() {
         let me = this;
 
-        request("http://localhost:3080/header", function (err, response, body) {
+        request(APIService.URL_PREFIX + "/header", function (err, response, body) {
             if (err) {
                 console.log(err);
             } else {
@@ -62,7 +63,7 @@ export default class APIService {
             return;
         }
 
-        request("http://localhost:3080/header/" + albumId, function (err, response, body) {
+        request(APIService.URL_PREFIX + "/header/" + albumId, function (err, response, body) {
             if (err) {
                 console.log(err);
             } else {
@@ -94,7 +95,7 @@ export default class APIService {
         let me = this,
             ids = [];
 
-        request("http://localhost:3080/album", function (err, response, body) {
+        request(APIService.URL_PREFIX + "/album", function (err, response, body) {
             if (err) {
                 console.log(err);
             } else {
@@ -137,7 +138,7 @@ export default class APIService {
             return;
         }
 
-        request("http://localhost:3080/album/" + albumId, function (err, response, body) {
+        request(APIService.URL_PREFIX + "/album/" + albumId, function (err, response, body) {
             if (err) {
                 console.log(err);
             } else {
@@ -176,7 +177,7 @@ export default class APIService {
 
     getPhotos(ids, callback, size) {
         request({
-            url: "http://localhost:3080/photos",
+            url: APIService.URL_PREFIX + "/photos",
             qs: {ids: ids},
             useQuerystring: true
         }, function (err, response, body) {
