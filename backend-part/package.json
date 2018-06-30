@@ -1,0 +1,25 @@
+{
+  "name": "marialbum-server",
+  "version": "1.0.0",
+  "description": "Server for marialbum.com that forwards requests to vk.api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MinchukSergei/marialbum.git"
+  },
+  "author": "Sergey Minchuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MinchukSergei/marialbum/issues"
+  },
+  "homepage": "https://github.com/MinchukSergei/marialbum#readme",
+  "dependencies": {
+    "koa": "^2.5.1",
+    "koa-http-request": "^2.2.1",
+    "koa-pino-logger": "^2.1.3",
+    "koa-router": "^7.4.0"
+  }
+}
