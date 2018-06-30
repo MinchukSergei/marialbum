@@ -10,7 +10,7 @@ router.use(koaRequest({host: 'https://api.vk.com/method'}));
 router.get('/header', async (ctx, next) => {
     ctx.state.vkResponse = await ctx.get('/groups.getById', createParams({
         group_id: GROUP_ID,
-        fields: 'description'
+        fields: ['description', 'crop_photo']
     }));
     next();
 });
@@ -52,7 +52,10 @@ router.get('/photos', async (ctx, next) => {
     if (!ids) {
         return;
     } else {
-        ids = ids.split(',').map(id => {
+        if (!Array.isArray(ids)) {
+            ids = [ids];
+        }
+        ids = ids.map(id => {
             return -GROUP_ID + '_' + id;
         });
     }
